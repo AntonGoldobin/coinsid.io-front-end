@@ -34,8 +34,7 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
-          limit: 10000,
-          name: utils.assetsPath('assets/img/[name].[ext]?[hash]')
+          name: '[name].[ext]?[hash]'
         }
       }
     ]
@@ -55,7 +54,7 @@ module.exports = {
     hints: false
   },
   devtool: '#eval-source-map'
-}
+};
 
 if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map'
