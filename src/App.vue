@@ -5,9 +5,12 @@
       <b-row>
         <b-col cols="6" class="post-scroll">
           <ol class="animated fadeIn">
-            <b-row>
+            <b-row class="mt-3 mb-3">
+              <b-col cols="2">
+                <h6 class="text-white text-right ">Themes</h6>
+              </b-col>
               <b-col cols="3">
-                <select class="form-control" v-model="newsTheme" id="chooseNewsTheme">
+                <select class="form-control bg-dark text-white" v-model="newsTheme" id="chooseNewsTheme">
                   <option>business</option>
                   <option>entertainment</option>
                   <option>health</option>
