@@ -21,9 +21,14 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           loaders: {
+            scss: 'style!css!sass'
           }
           // other vue-loader options go here
         }
+      },
+      {
+        test: /\.s[a|c]ss$/,
+        loader: 'style!css!sass'
       },
       {
         test: /\.js$/,

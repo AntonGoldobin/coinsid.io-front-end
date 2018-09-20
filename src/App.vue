@@ -148,43 +148,39 @@
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="sass">
+  @import 'stylesheets/main.sass'
 
-h1, h2 {
-  font-weight: normal;
-}
+#app
+  font-family: 'Avenir', Helvetica, Arial, sans-serif
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  text-align: center
+  color: #2c3e50
+  margin-top: 60px
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+h1, h2
+  font-weight: normal
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+ul
+  list-style-type: none
+  padding: 0
 
-a {
-  color: #42b983;
-}
-.news-logo{
-  height: 30px;
-  width: 30px;
-}
-.card:hover{
-  background: #24292d !important;
-}
-.post-scroll{
-  height: 95vh;
-  overflow-y: scroll;
-}
+li
+  display: inline-block
+  margin: 0 10px
 
+a
+  color: #42b983
+
+.news-logo
+  height: 30px
+  width: 30px
+
+.card:hover
+  background: #24292d !important
+
+.post-scroll
+  height: 95vh
+  overflow-y: scroll
 </style>
