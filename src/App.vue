@@ -44,26 +44,26 @@
                 enter-active-class="animated fadeIn"
                 leave-active-class="animated fadeOut">
                  <div v-bind:key="selectedPostId">
-                   <!--<div v-if="postCheck">-->
-                     <!--<img class="card-img-top" :src="this.posts[0].urlToImage" alt="Card image cap">-->
-                     <!--<h1 class="card-title mt-3">{{this.posts[0].title}}</h1>-->
-                     <!--<h6 class="card-subtitle mt-3 text-muted">{{this.posts[0].author + " " + this.posts[0].publishedAt}}</h6>-->
-                     <!--<p class="card-text mt-3">{{this.posts[0].description}}</p>-->
-                     <!--<p class="card-text mt-3">{{this.posts[0].content}}</p>-->
-                     <!--<a :href="this.posts[0].url" target="_blank">-->
-                       <!--<button type="button"  class="btn btn-outline-light mt-3 mb-5">Details </button>-->
-                     <!--</a>-->
-                   <!--</div>-->
-                   <!--<div v-else>-->
-                     <!--<img class="card-img-top" :src="selectedPostImg" alt="Card image cap">-->
-                     <!--<h1 class="card-title mt-3">{{selectedPostTitle}}</h1>-->
-                     <!--<h6 class="card-subtitle mt-3 text-muted">{{selectedPostAuthor + " " + selectedPostPublishedAt}}</h6>-->
-                     <!--<p class="card-text mt-3">{{selectedPostDescr}}</p>-->
-                     <!--<p class="card-text mt-3">{{selectedPostContent}}</p>-->
-                     <!--<a :href="selectedPostLink" target="_blank">-->
-                       <!--<button type="button"  class="btn btn-outline-light mt-3 mb-5">Details </button>-->
-                     <!--</a>-->
-                   <!--</div>-->
+                   <div v-if="postCheck">
+                     <img class="card-img-top" :src="this.posts[0].urlToImage" alt="Card image cap">
+                     <h1 class="card-title mt-3">{{this.posts[0].title}}</h1>
+                     <h6 class="card-subtitle mt-3 text-muted">{{this.posts[0].author + " " + this.posts[0].publishedAt}}</h6>
+                     <p class="card-text mt-3">{{this.posts[0].description}}</p>
+                     <p class="card-text mt-3">{{this.posts[0].content}}</p>
+                     <a :href="this.posts[0].url" target="_blank">
+                       <button type="button"  class="btn btn-outline-light mt-3 mb-5">Details </button>
+                     </a>
+                   </div>
+                   <div v-else>
+                     <img class="card-img-top" :src="selectedPostImg" alt="Card image cap">
+                     <h1 class="card-title mt-3">{{selectedPostTitle}}</h1>
+                     <h6 class="card-subtitle mt-3 text-muted">{{selectedPostAuthor + " " + selectedPostPublishedAt}}</h6>
+                     <p class="card-text mt-3">{{selectedPostDescr}}</p>
+                     <p class="card-text mt-3">{{selectedPostContent}}</p>
+                     <a :href="selectedPostLink" target="_blank">
+                       <button type="button"  class="btn btn-outline-light mt-3 mb-5">Details </button>
+                     </a>
+                   </div>
                  </div>
               </transition>
             </div>
@@ -95,14 +95,14 @@
   methods: {
     selectedPostShow: function (post) {
 
-      // this.selectedPostImg = post.urlToImage;
-      // this.selectedPostDescr = post.description;
-      // this.selectedPostTitle = post.title;
-      // this.selectedPostContent = post.content;
-      // this.selectedPostPublishedAt = post.publishedAt;
-      // this.selectedPostAuthor = post.author;
-      // this.selectedPostLink = post.url;
-      // this.selectedPostId = post.id;
+      this.selectedPostImg = post.urlToImage;
+      this.selectedPostDescr = post.description;
+      this.selectedPostTitle = post.title;
+      this.selectedPostContent = post.content;
+      this.selectedPostPublishedAt = post.publishedAt;
+      this.selectedPostAuthor = post.author;
+      this.selectedPostLink = post.url;
+      this.selectedPostId = post.id;
     },
     testVar: function () {
       console.log(this.selectedPostLink)
@@ -148,39 +148,40 @@
 }
 </script>
 
-<style lang="sass">
-  @import 'stylesheets/main.sass'
+<style >
+  @import 'stylesheets/main.sass';
 
-#app
-  font-family: 'Avenir', Helvetica, Arial, sans-serif
-  -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
-  text-align: center
-  color: #2c3e50
-  margin-top: 60px
-
-h1, h2
-  font-weight: normal
-
-ul
-  list-style-type: none
-  padding: 0
-
-li
-  display: inline-block
-  margin: 0 10px
-
-a
-  color: #42b983
-
-.news-logo
-  height: 30px
-  width: 30px
-
-.card:hover
-  background: #24292d !important
-
-.post-scroll
-  height: 95vh
-  overflow-y: scroll
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+h1, h2 {
+  font-weight: normal;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10;
+}
+a{
+  color: #42b983;
+}
+.news-logo {
+  height: 30px;
+  width: 30px;
+}
+.card:hover {
+  background: #24292d !important;
+}
+.post-scroll {
+  height: 95vh;
+  overflow-y: scroll;
+}
 </style>
