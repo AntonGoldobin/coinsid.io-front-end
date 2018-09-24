@@ -44,26 +44,26 @@
                 enter-active-class="animated fadeIn"
                 leave-active-class="animated fadeOut">
                  <div v-bind:key="selectedPostId">
-                   <div v-if="postCheck">
-                     <img class="card-img-top" :src="this.posts[0].urlToImage" alt="Card image cap">
-                     <h1 class="card-title mt-3">{{this.posts[0].title}}</h1>
-                     <h6 class="card-subtitle mt-3 text-muted">{{this.posts[0].author + " " + this.posts[0].publishedAt}}</h6>
-                     <p class="card-text mt-3">{{this.posts[0].description}}</p>
-                     <p class="card-text mt-3">{{this.posts[0].content}}</p>
-                     <a :href="this.posts[0].url" target="_blank">
-                       <button type="button"  class="btn btn-outline-light mt-3 mb-5">Details </button>
-                     </a>
-                   </div>
-                   <div v-else>
-                     <img class="card-img-top" :src="selectedPostImg" alt="Card image cap">
-                     <h1 class="card-title mt-3">{{selectedPostTitle}}</h1>
-                     <h6 class="card-subtitle mt-3 text-muted">{{selectedPostAuthor + " " + selectedPostPublishedAt}}</h6>
-                     <p class="card-text mt-3">{{selectedPostDescr}}</p>
-                     <p class="card-text mt-3">{{selectedPostContent}}</p>
-                     <a :href="selectedPostLink" target="_blank">
-                       <button type="button"  class="btn btn-outline-light mt-3 mb-5">Details </button>
-                     </a>
-                   </div>
+                   <!--<div v-if="postCheck">-->
+                     <!--<img class="card-img-top" :src="this.posts[0].urlToImage" alt="Card image cap">-->
+                     <!--<h1 class="card-title mt-3">{{this.posts[0].title}}</h1>-->
+                     <!--<h6 class="card-subtitle mt-3 text-muted">{{this.posts[0].author + " " + this.posts[0].publishedAt}}</h6>-->
+                     <!--<p class="card-text mt-3">{{this.posts[0].description}}</p>-->
+                     <!--<p class="card-text mt-3">{{this.posts[0].content}}</p>-->
+                     <!--<a :href="this.posts[0].url" target="_blank">-->
+                       <!--<button type="button"  class="btn btn-outline-light mt-3 mb-5">Details </button>-->
+                     <!--</a>-->
+                   <!--</div>-->
+                   <!--<div v-else>-->
+                     <!--<img class="card-img-top" :src="selectedPostImg" alt="Card image cap">-->
+                     <!--<h1 class="card-title mt-3">{{selectedPostTitle}}</h1>-->
+                     <!--<h6 class="card-subtitle mt-3 text-muted">{{selectedPostAuthor + " " + selectedPostPublishedAt}}</h6>-->
+                     <!--<p class="card-text mt-3">{{selectedPostDescr}}</p>-->
+                     <!--<p class="card-text mt-3">{{selectedPostContent}}</p>-->
+                     <!--<a :href="selectedPostLink" target="_blank">-->
+                       <!--<button type="button"  class="btn btn-outline-light mt-3 mb-5">Details </button>-->
+                     <!--</a>-->
+                   <!--</div>-->
                  </div>
               </transition>
             </div>
@@ -95,14 +95,14 @@
   methods: {
     selectedPostShow: function (post) {
 
-      this.selectedPostImg = post.urlToImage;
-      this.selectedPostDescr = post.description;
-      this.selectedPostTitle = post.title;
-      this.selectedPostContent = post.content;
-      this.selectedPostPublishedAt = post.publishedAt;
-      this.selectedPostAuthor = post.author;
-      this.selectedPostLink = post.url;
-      this.selectedPostId = post.id;
+      // this.selectedPostImg = post.urlToImage;
+      // this.selectedPostDescr = post.description;
+      // this.selectedPostTitle = post.title;
+      // this.selectedPostContent = post.content;
+      // this.selectedPostPublishedAt = post.publishedAt;
+      // this.selectedPostAuthor = post.author;
+      // this.selectedPostLink = post.url;
+      // this.selectedPostId = post.id;
     },
     testVar: function () {
       console.log(this.selectedPostLink)
@@ -119,9 +119,9 @@
     }
   },
    created(){
-    this.$http.get('https://newsapi.org/v2/top-headlines?country=us&category=&apiKey=a93efd4a6b494094923df48865c7bba3').then(responce => {
+    this.$http.get('https://coinsidio.herokuapp.com/articles').then(responce => {
       this.posts = responce.data.articles;
-      console.log(this.showNews);
+      console.log(this.posts);
       return this.posts
     })
       .catch(error => {
