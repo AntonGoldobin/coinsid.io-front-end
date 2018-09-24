@@ -7,6 +7,7 @@ import Navbar from './components/navbar'
 import VueResource from 'vue-resource'
 import Router from 'vue-router'
 
+
 Vue.use(Router);
 
 
