@@ -5,22 +5,25 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import Navbar from './components/navbar'
 import VueResource from 'vue-resource'
+import Router from 'vue-router'
+
+Vue.use(Router);
 
 
 Vue.use(BootstrapVue);
 Vue.component('navbar',Navbar);
 Vue.use(VueResource);
 
-new Vue({
-  http: {
-    root: '/root',
-    headers: {
-      Authorization: 'Basic YXBpOnBhc3N3b3Jk'
+
+ new Router({
+  routes: [
+    {
+      path: '/login',
+      name: 'Authentication',
+      component: Navbar
     }
-  }
+  ]
 });
-
-
 
 new Vue({
   el: '#app',
