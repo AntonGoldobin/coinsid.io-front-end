@@ -6,6 +6,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import Navbar from './components/navbar'
 import VueResource from 'vue-resource'
 import Router from 'vue-router'
+import './styles/main.scss'
 
 
 Vue.use(Router);

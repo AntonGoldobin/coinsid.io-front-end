@@ -1,5 +1,41 @@
-.business-theme-card {
-  background: #456434;
-  width: 100%;
-  height: 100px;
+.carousel-caption {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: unset;
+  height: 200px;
+}
+.carousel-item{
+  height: 200px;
+}
+.news-theme-card-3{
+  background: #8f51d4; /* Old browsers */
+  background: -moz-linear-gradient(45deg, #8f51d4 0%, #5b8ad6 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg, #8f51d4 0%,#5b8ad6 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg, #8f51d4 0%,#5b8ad6 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8f51d4', endColorstr='#5b8ad6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+.news-theme-card-2{
+  background: #ea4073; /* Old browsers */
+  background: -moz-linear-gradient(45deg, #ea4073 0%, #7a44cf 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg, #ea4073 0%,#7a44cf 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg, #ea4073 0%,#7a44cf 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ea4073', endColorstr='#7a44cf',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+.news-theme-card-1{
+  background: #f09b42; /* Old browsers */
+  background: -moz-linear-gradient(45deg, #f09b42 0%, #ea4073 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg, #f09b42 0%,#ea4073 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg, #f09b42 0%,#ea4073 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09b42', endColorstr='#ea4073',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+.news-theme-card-0{
+  background: #f1f243; /* Old browsers */
+  background: -moz-linear-gradient(45deg, #f1f243 0%, #ea6e41 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg, #f1f243 0%,#ea6e41 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg, #f1f243 0%,#ea6e41 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f243', endColorstr='#ea6e41',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
 }

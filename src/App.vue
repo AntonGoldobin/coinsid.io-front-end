@@ -6,18 +6,31 @@
         <b-col cols="6" class="post-scroll">
           <ol class="animated fadeIn">
             <b-row class="mt-3 mb-3">
-              <b-col cols="2">
-                <h6 class="text-white text-right ">Themes</h6>
-              </b-col>
-              <b-col cols="3">
-                <select class="form-control bg-dark text-white" v-model="newsTheme" id="chooseNewsTheme">
-                  <option>business</option>
-                  <option>entertainment</option>
-                  <option>health</option>
-                  <option>science</option>
-                  <option>sports</option>
-                  <option>technology</option>
-                </select>
+              <b-col cols="12">
+                <b-carousel id="carousel"
+                            controls
+                            indicators
+                            :interval="0"
+                            v-model="slide"
+                            @sliding-start="onSlideStart"
+                            @sliding-end="onSlideEnd"
+                            :class="['news-theme-card-' + slide]"
+                >
+                  <!-- Text slides with image -->
+                  <b-carousel-slide>
+                    <h1>Entertainment</h1>
+                  </b-carousel-slide>
+                  <b-carousel-slide>
+                    <h1>Health</h1>
+                  </b-carousel-slide>
+                  <b-carousel-slide>
+                    <h1>Science</h1>
+                  </b-carousel-slide>
+                  <b-carousel-slide>
+                    <h1>Bitcoin</h1>
+                  </b-carousel-slide>
+
+                </b-carousel>
               </b-col>
             </b-row>
             <div v-for="post in searchPosts" :key="post.id">
@@ -75,10 +88,13 @@
 </template>
 
 <script>
+
   export default {
   name: 'app',
   data () {
     return {
+      slide: 0,
+      sliding: null,
       selectedPostTitle: '',
       selectedPostDescr: '',
       selectedPostId: null,
@@ -106,7 +122,12 @@
     },
     testVar: function () {
       console.log(this.selectedPostLink)
-    }
+    },
+    onSlideStart (slide) {
+      this.sliding = true
+    },
+    onSlideEnd (slide) {
+      this.sliding = false}
   },
   computed:{
     searchPosts: function (post) {
@@ -119,14 +140,23 @@
     }
   },
    created(){
-    this.$http.get('https://coinsidio.herokuapp.com/articles').then(responce => {
-      this.posts = responce.data.articles;
-      console.log(this.posts);
-      return this.posts
-    })
-      .catch(error => {
-        console.log(error)
-      });
+   //  this.$http.get('https://coinsidio.herokuapp.com/articles').then(responce => {
+   //    this.posts = responce.data.articles;
+   //    console.log(this.posts);
+   //    return this.posts
+   //  })
+   //    .catch(error => {
+   //      console.log(error)
+   //    });
+   // },
+     this.$http.get('https://newsapi.org/v2/top-headlines?country=us&apiKey=a93efd4a6b494094923df48865c7bba3').then(responce => {
+       this.posts = responce.data.articles;
+       console.log(this.posts);
+       return this.posts
+     })
+       .catch(error => {
+         console.log(error)
+       });
    },
     mounted: function(){
       this.$on( 'search', function(search) {
@@ -134,23 +164,47 @@
     })
     },
     watch: {
-      newsTheme: function(){
-        this.$http.get('https://newsapi.org/v2/top-headlines?country=us&category=' + this.newsTheme + '&apiKey=a93efd4a6b494094923df48865c7bba3').then(responce => {
-          this.posts = responce.data.articles;
-          console.log(this.showNews);
-          return this.posts
-        })
-          .catch(error => {
-            console.log(error)
-          });
+      slide: function(){
+        if(this.slide===0){
+         this.newsTheme = 'entertainment'
+        }
+        else if(this.slide===1){
+          this.newsTheme = 'health'
+        }
+        else if(this.slide===2){
+          this.newsTheme = 'science'
+        }
+        else {
+          this.newsTheme = 'bitcoin'
+        }
+      },
+      newsTheme: function() {
+        if (this.slide === 3) {
+          this.$http.get('https://coinsidio.herokuapp.com/articles').then(responce => {
+               this.posts = responce.data.articles;
+               console.log(this.posts);
+               return this.posts
+             })
+               .catch(error => {
+                 console.log(error)
+               });
+        }
+        else {
+          this.$http.get('https://newsapi.org/v2/top-headlines?country=us&category=' + this.newsTheme + '&apiKey=a93efd4a6b494094923df48865c7bba3').then(responce => {
+            this.posts = responce.data.articles;
+            return this.posts
+          })
+            .catch(error => {
+              console.log(error)
+            });
+        }
       }
     }
 }
 </script>
 
-<style >
-  @import 'stylesheets/main.sass';
-
+<style lang="scss">
+  @import '/styles/main';
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

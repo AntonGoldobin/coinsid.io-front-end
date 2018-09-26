@@ -2,6 +2,8 @@ var path = require('path')
 var webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+
+
 module.exports = {
   entry: './src/main.js',
   output: {
@@ -16,9 +18,17 @@ module.exports = {
         use: 'html-loader'
       },
       {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
+      },
+      {
         test: /\.css$/,
         use: [
-          'vue-style-loader',
+          'style-loader',
           'css-loader'
         ],
       },
@@ -27,14 +37,9 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           loaders: {
-            scss: 'style!css!sass'
           }
           // other vue-loader options go here
         }
-      },
-      {
-        test: /\.s[a|c]ss$/,
-        loader: 'style!css!sass'
       },
       {
         test: /\.js$/,
@@ -53,7 +58,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index.html'
-    })
+    }),
   ],
   resolve: {
     alias: {
