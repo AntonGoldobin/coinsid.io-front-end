@@ -120,7 +120,7 @@
         this.scrollUp = true
       }
       else{
-        if(this.scrollPosition >= 600){
+        if(this.scrollPosition <= 20){
           this.scrollUp = false
         }
       }
