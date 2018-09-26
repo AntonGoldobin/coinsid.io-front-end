@@ -1,25 +1,38 @@
+
+
+.carousel-caption {
+  height: 100%;
+}
+.carousel-inner{
+  height: 100%;
+}
+.carousel-item{
+  height: 100%;
+}
 .carousel-caption {
   display: flex;
   justify-content: center;
   align-items: center;
   bottom: unset;
-  height: 200px;
+  height: 100%;
 }
-.carousel-item{
-  height: 200px;
+.carousel{
+  height: 100%;
+  border-radius: 20px;
 }
+
 .news-theme-card-3{
-  background: #8f51d4; /* Old browsers */
+  background: url("https://secure.gravatar.com/avatar/51d04b96ad13b78a9e460d2311ee1e52?s=320&d=retro&r=pg") right no-repeat;  /* Old browsers */
   background: -moz-linear-gradient(45deg, #8f51d4 0%, #5b8ad6 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(45deg, #8f51d4 0%,#5b8ad6 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(45deg, #8f51d4 0%,#5b8ad6 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: url("/src/assets/img/bitcoin.png") no-repeat, linear-gradient(45deg, #8f51d4 0%,#5b8ad6 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8f51d4', endColorstr='#5b8ad6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 .news-theme-card-2{
   background: #ea4073; /* Old browsers */
   background: -moz-linear-gradient(45deg, #ea4073 0%, #7a44cf 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(45deg, #ea4073 0%,#7a44cf 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(45deg, #ea4073 0%,#7a44cf 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: url("/src/assets/img/technology.png") no-repeat, linear-gradient(45deg, #ea4073 0%,#7a44cf 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ea4073', endColorstr='#7a44cf',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
 }
@@ -27,7 +40,7 @@
   background: #f09b42; /* Old browsers */
   background: -moz-linear-gradient(45deg, #f09b42 0%, #ea4073 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(45deg, #f09b42 0%,#ea4073 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(45deg, #f09b42 0%,#ea4073 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: url("/src/assets/img/health.png") no-repeat, linear-gradient(45deg, #f09b42 0%,#ea4073 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09b42', endColorstr='#ea4073',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
 }
@@ -35,7 +48,26 @@
   background: #f1f243; /* Old browsers */
   background: -moz-linear-gradient(45deg, #f1f243 0%, #ea6e41 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(45deg, #f1f243 0%,#ea6e41 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(45deg, #f1f243 0%,#ea6e41 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: url("/src/assets/img/entertainment.png") no-repeat, linear-gradient(45deg, #f1f243 0%,#ea6e41 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f243', endColorstr='#ea6e41',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
+}
+
+.themeHeightLong{
+  height: 300px;
+  transition: all 1s;
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.07);
+  h1{
+    transition: all 1s;
+  }
+}
+.themeHeightShort{
+  height: 70px;
+  transition: all 1s;
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.07);
+  h1{
+    font-size: 25px;
+    font-weight: 500;
+    transition: all 1s;
+  }
 }

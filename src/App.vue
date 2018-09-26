@@ -3,45 +3,48 @@
     <navbar></navbar>
     <b-container-fluid>
       <b-row>
-        <b-col cols="6" class="post-scroll">
+        <b-col cols="6" >
           <ol class="animated fadeIn">
             <b-row class="mt-3 mb-3">
               <b-col cols="12">
-                <b-carousel id="carousel"
-                            controls
-                            indicators
-                            :interval="0"
-                            v-model="slide"
-                            @sliding-start="onSlideStart"
-                            @sliding-end="onSlideEnd"
-                            :class="['news-theme-card-' + slide]"
-                >
-                  <!-- Text slides with image -->
-                  <b-carousel-slide>
-                    <h1>Entertainment</h1>
-                  </b-carousel-slide>
-                  <b-carousel-slide>
-                    <h1>Health</h1>
-                  </b-carousel-slide>
-                  <b-carousel-slide>
-                    <h1>Science</h1>
-                  </b-carousel-slide>
-                  <b-carousel-slide>
-                    <h1>Bitcoin</h1>
-                  </b-carousel-slide>
-
-                </b-carousel>
+                <div v-bind:class="{ themeHeightLong:!scrollUp, themeHeightShort:scrollUp }">
+                  <b-carousel id="carousel"
+                              controls
+                              indicators
+                              :interval="0"
+                              v-model="slide"
+                              @sliding-start="onSlideStart"
+                              @sliding-end="onSlideEnd"
+                              :class="['news-theme-card-' + slide]"
+                     >
+                    <!-- Text slides with image -->
+                    <b-carousel-slide>
+                      <h1>Entertainment</h1>
+                    </b-carousel-slide>
+                    <b-carousel-slide>
+                      <h1>Health</h1>
+                    </b-carousel-slide>
+                    <b-carousel-slide>
+                      <h1>Science</h1>
+                    </b-carousel-slide>
+                    <b-carousel-slide>
+                      <h1>Bitcoin</h1>
+                    </b-carousel-slide>
+                  </b-carousel>
+                </div>
               </b-col>
             </b-row>
-            <div v-for="post in searchPosts" :key="post.id">
-              <div class="card bg-dark text-white" v-on:click="selectedPostShow(post)">
-                <div class="row align-items-center">
-                  <b-col cols="1">
-                    <img class="m-3 news-logo" :src="post.urlToImage" alt="Card image cap">
-                  </b-col>
-                  <b-col cols="11">
-                    <p class="p-3 text-left card-text">{{ post.title }}</p>
-                  </b-col>
+            <div class="post-scroll" v-on:scroll="handleScroll">
+              <div v-for="post in searchPosts" :key="post.id">
+                <div class="card bg-dark text-white" v-on:click="selectedPostShow(post)">
+                  <div class="row align-items-center">
+                    <b-col cols="1">
+                      <img class="m-3 news-logo" :src="post.urlToImage" alt="Card image cap">
+                    </b-col>
+                    <b-col cols="11">
+                      <p class="p-3 text-left card-text">{{ post.title }}</p>
+                    </b-col>
+                  </div>
                 </div>
               </div>
             </div>
@@ -106,9 +109,25 @@
       posts: [],
       search: '',
       newsTheme: '',
+      scrollUp: false
     }
   },
   methods: {
+    //для резинового меню тем новостей
+    handleScroll: function(e) {
+      var currentScrollPosition = e.srcElement.scrollTop;
+      if (currentScrollPosition > this.scrollPosition) {
+        console.log(this.scrollPosition);
+        this.scrollUp = true
+      }
+      else{
+        console.log ('scroll up');
+        if(this.scrollPosition >= 600){
+          this.scrollUp = false
+        }
+      }
+      this.scrollPosition = currentScrollPosition;
+    },
     selectedPostShow: function (post) {
 
       this.selectedPostImg = post.urlToImage;
@@ -149,6 +168,7 @@
    //      console.log(error)
    //    });
    // },
+     window.addEventListener('scroll', this.handleScroll);
      this.$http.get('https://newsapi.org/v2/top-headlines?country=us&apiKey=a93efd4a6b494094923df48865c7bba3').then(responce => {
        this.posts = responce.data.articles;
        console.log(this.posts);
@@ -199,13 +219,17 @@
             });
         }
       }
+    },
+    destroyed: function () {
+      window.removeEventListener('scroll', this.handleScroll);
     }
 }
 </script>
 
 <style lang="scss">
   @import '/styles/main';
-#app {
+
+  #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
