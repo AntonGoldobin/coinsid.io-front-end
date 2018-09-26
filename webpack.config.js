@@ -1,8 +1,7 @@
 var path = require('path')
 var webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   entry: './src/main.js',
@@ -59,6 +58,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'index.html'
     }),
+    new CopyWebpackPlugin([
+        {from:'src/assets/img',to:'src/assets/img'}
+    ]),
   ],
   resolve: {
     alias: {

@@ -117,11 +117,9 @@
     handleScroll: function(e) {
       var currentScrollPosition = e.srcElement.scrollTop;
       if (currentScrollPosition > this.scrollPosition) {
-        console.log(this.scrollPosition);
         this.scrollUp = true
       }
       else{
-        console.log ('scroll up');
         if(this.scrollPosition >= 600){
           this.scrollUp = false
         }
