@@ -54,8 +54,6 @@
         </b-col>
 
         <b-col cols="6" class="post-scroll">
-          <pre class="ascii-element">
-          </pre>
           <div class="card bg-dark text-white">
             <div class="card-body">
               <transition
