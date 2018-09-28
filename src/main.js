@@ -9,6 +9,7 @@ import Router from 'vue-router'
 import './styles/main.scss'
 
 
+
 Vue.use(Router);
 
 
