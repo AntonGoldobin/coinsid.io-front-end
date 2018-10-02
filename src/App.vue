@@ -11,7 +11,6 @@
                             indicators
                             :interval="0"
                             @sliding-start="onSlideStart"
-                            @sliding-end="onSlideEnd"
                             v-model="slide"
                             :class="['news-theme-card-' + slide]"
                    >
@@ -37,7 +36,7 @@
                  class="animated"
                  v-bind:class="[newsAnimation]"
                  :key="post.id">
-              <div class="card news-row bg-dark text-white" v-on:click="selectedPostShow(post)">
+              <div class="card news-row" v-on:click="selectedPostShow(post)">
                 <div class="row align-items-center">
                   <b-col cols="1">
                     <img class="m-3 news-logo" :src="post.iconURL">
@@ -57,35 +56,39 @@
         </b-col>
 
         <b-col cols="6" class="post-scroll-card">
-          <div class="card bg-dark text-white">
-            <div class="card-body">
+          <div class="card">
+            <div class="card-body" v-bind:key="selectedPostId">
               <transition
                 :duration="200"
                 name="component-fade" mode="out-in"
                 enter-active-class="animated fadeIn"
                 leave-active-class="animated fadeOut">
-                 <div v-bind:key="selectedPostId">
                    <div v-if="postCheck">
-                     <img class="card-img-top"
-                          :src="this.posts[0].urlToImage"
-                          alt="Card image cap">
-                     <h1 class="card-title mt-3">{{this.posts[0].title}}</h1>
-                     <h6 class="card-subtitle mt-3 text-muted">{{this.posts[0].author + " " + this.posts[0].publishedAt}}</h6>
-                     <p class="card-text mt-3">{{this.posts[0].description}}</p>
-                     <a :href="this.posts[0].url" target="_blank">
-                       <button type="button"  class="btn btn-outline-light mt-3 mb-5">Details </button>
-                     </a>
+                     <div class="news-title-bg">
+                       <img class="card-img-top img-blur" :src="posts[0].urlToImage" alt="Card image cap" align="center|middle">
+                       <h1 class="card-title">{{this.posts[0].title}}</h1>
+                     </div>
+                     <div class="news-description pt-3">
+                       <h6 class="card-subtitle pt-3 text-muted">{{this.posts[0].author + "   " + this.posts[0].publishedAt}}</h6>
+                       <p class="card-text mt-3">{{this.posts[0].description}}</p>
+                       <a :href="this.posts[0].url" target="_blank">
+                         <button type="button"  class="btn news-btn mt-3 mb-5">Details </button>
+                       </a>
+                     </div>
                    </div>
                    <div v-else>
-                     <img class="card-img-top" :src="selectedPostImg" alt="Card image cap">
-                     <h1 class="card-title mt-3">{{selectedPostTitle}}</h1>
-                     <h6 class="card-subtitle mt-3 text-muted">{{selectedPostAuthor + " " + selectedPostPublishedAt}}</h6>
-                     <p class="card-text mt-3">{{selectedPostDescr}}</p>
-                     <a :href="selectedPostLink" target="_blank">
-                       <button type="button"  class="btn btn-outline-light mt-3 mb-5">Details </button>
-                     </a>
+                     <div class="news-title-bg">
+                       <img class="card-img-top img-blur" :src="selectedPostImg" alt="Card image cap" align="center|middle">
+                       <h1 class="card-title">{{selectedPostTitle}}</h1>
+                     </div>
+                     <div class="news-description pt-3">
+                       <h6 class="card-subtitle pt-3 text-muted">{{selectedPostAuthor + " " + selectedPostPublishedAt}}</h6>
+                       <p class="card-text mt-3">{{selectedPostDescr}}</p>
+                       <a :href="selectedPostLink" target="_blank">
+                         <button type="button"  class="btn news-btn mt-3 mb-5">Details </button>
+                       </a>
+                     </div>
                    </div>
-                 </div>
               </transition>
             </div>
           </div>

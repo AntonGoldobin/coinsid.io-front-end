@@ -55,10 +55,57 @@ body{
   background-size: cover;
 }
 .card-text{
-  font-size: 13px;
+  font-size: 16px;
+}
+.news-title-bg:hover{
+  .img-blur{
+    filter: unset;
+    transition: 1s;
+  }
+  .card-title{
+    color: rgba(0, 0, 0, 0);
+    transition: 1s;
+    background: none;
+  }
+}
+.card-title{
+  transition: 1s;
+  font-size: 35px;
+  background: rgba(0, 0, 0, 0.60);
+  color: white;
+  display: flex;
+  height: 300px;
+  margin-bottom: unset;
+  align-items: center;
+  justify-content: center;
+}
+.card{
+  height: 100%;
+  background: unset;
+  border: unset;
+}
+.img-blur{
+  transition: 1s;
+  position: absolute;
+  left: 0;
+  top: 0;
+  filter: blur(4px);
+  z-index: -1;
+  object-fit: cover;
+  max-height: 320px;
 }
 .news-row{
   height: 50px;
+  background-color: #343a40;
+  color: white;
+  cursor: default;
+  border-bottom: 0.5px solid #2b2b2b;
+  .card-text{
+    font-size: 13px;
+  }
+  &:hover{
+    background: rgba(0, 0, 0, 0.2);
+  }
 }
 .themeHeightLong{
   height: 300px;
@@ -95,7 +142,7 @@ body{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: white;
 }
 h1, h2 {
   font-weight: normal;
@@ -106,7 +153,7 @@ ul {
 }
 li {
   display: inline-block;
-  margin: 0 10;
+  margin: 10;
 }
 a{
   color: #42b983;
@@ -114,9 +161,6 @@ a{
 .news-logo {
   height: 30px;
   width: 30px;
-}
-.card:hover {
-  background: #24292d !important;
 }
 .post-scroll {
   height: 90vh;
@@ -126,17 +170,15 @@ a{
 .post-scroll-card{
   height: 100vh;
   overflow-y: scroll;
-  padding: 0 15px 0 0;
+  padding: 0 14px 0 0;
 }
 .card-body{
   padding: unset;
+  border-left: 0.5px solid #2b2b2b;
   h1, h6, p{
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 50px;
+    padding-right: 50px;
   }
-}
-.card:hover {
-  background: unset !important;
 }
 .animated {
   -webkit-animation-duration: 300ms;
@@ -151,4 +193,18 @@ a{
   padding: 6px;
   margin-right: 10px;
   cursor: default;
+}
+.news-description{
+  background: #333a41;
+}
+.news-btn{
+  color: white;
+  border-radius: 23px;
+  width: 130px;
+  background-color: rgba(0, 0, 0, 0.29);
+  transition: 1s;
+  &:hover{
+    background-color: rgba(0, 0, 0, 0.48);
+    transition: 1s;
+  }
 }
