@@ -195,7 +195,7 @@
           this.newsAnimation = 'fadeIn';
           if (this.slide === 3) {
             this.$http.get('https://coinsidio.herokuapp.com/articles').then(responce => {
-                 this.posts = responce.data.articles;
+                 this.posts = responce.data;
                  console.log(this.posts);
                  return this.posts
                })
