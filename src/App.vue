@@ -2,58 +2,61 @@
   <div id="app">
     <b-container-fluid>
       <b-row>
-        <b-col cols="6" >
-          <ol>
-            <b-row class="mb-3">
-              <b-col cols="12">
-                <div v-bind:class="{ themeHeightLong:!scrollUp, themeHeightShort:scrollUp }">
-                  <b-carousel id="carousel"
-                              controls
-                              indicators
-                              :interval="0"
-                              @sliding-start="onSlideStart"
-                              @sliding-end="onSlideEnd"
-                              v-model="slide"
-                              :class="['news-theme-card-' + slide]"
-                     >
-                    <!-- Text slides with image -->
-                    <b-carousel-slide>
-                      <h1>Entertainment</h1>
-                    </b-carousel-slide>
-                    <b-carousel-slide>
-                      <h1>Health</h1>
-                    </b-carousel-slide>
-                    <b-carousel-slide>
-                      <h1>Science</h1>
-                    </b-carousel-slide>
-                    <b-carousel-slide>
-                      <h1>Bitcoin</h1>
-                    </b-carousel-slide>
-                  </b-carousel>
-                </div>
-              </b-col>
-            </b-row>
-            <div class="post-scroll" v-on:scroll="handleScroll">
-              <div v-for="post in searchPosts"
-                   class="animated"
-                   v-bind:class="[newsAnimation]"
-                   :key="post.id">
-                <div class="card news-row bg-dark text-white" v-on:click="selectedPostShow(post)">
-                  <div class="row align-items-center">
-                    <b-col cols="1">
-                      <img class="m-3 news-logo" :src="post.urlToImage">
-                    </b-col>
-                    <b-col cols="11">
-                      <p class="p-3 text-left card-text">{{ post.title }}</p>
-                    </b-col>
-                  </div>
+        <b-col cols="6" class="pr-0" >
+          <b-row>
+            <b-col cols="12">
+              <div v-bind:class="{ themeHeightLong:!scrollUp, themeHeightShort:scrollUp }">
+                <b-carousel id="carousel"
+                            controls
+                            indicators
+                            :interval="0"
+                            @sliding-start="onSlideStart"
+                            @sliding-end="onSlideEnd"
+                            v-model="slide"
+                            :class="['news-theme-card-' + slide]"
+                   >
+                  <!-- Text slides with image -->
+                  <b-carousel-slide>
+                    <h1>Entertainment</h1>
+                  </b-carousel-slide>
+                  <b-carousel-slide>
+                    <h1>Health</h1>
+                  </b-carousel-slide>
+                  <b-carousel-slide>
+                    <h1>Science</h1>
+                  </b-carousel-slide>
+                  <b-carousel-slide>
+                    <h1>Bitcoin</h1>
+                  </b-carousel-slide>
+                </b-carousel>
+              </div>
+            </b-col>
+          </b-row>
+          <div class="post-scroll" v-on:scroll="handleScroll">
+            <div v-for="post in searchPosts"
+                 class="animated"
+                 v-bind:class="[newsAnimation]"
+                 :key="post.id">
+              <div class="card news-row bg-dark text-white" v-on:click="selectedPostShow(post)">
+                <div class="row align-items-center">
+                  <b-col cols="1">
+                    <img class="m-3 news-logo" :src="post.iconURL">
+                  </b-col>
+                  <b-col cols="9">
+                    <p class="p-3 text-left card-text">{{ post.title }}</p>
+                  </b-col>
+                  <b-col cols="2">
+                    <div class="news-date-from">
+                      4 hours ago
+                    </div>
+                  </b-col>
                 </div>
               </div>
             </div>
-          </ol>
+          </div>
         </b-col>
 
-        <b-col cols="6" class="post-scroll">
+        <b-col cols="6" class="post-scroll-card">
           <div class="card bg-dark text-white">
             <div class="card-body">
               <transition
@@ -69,7 +72,6 @@
                      <h1 class="card-title mt-3">{{this.posts[0].title}}</h1>
                      <h6 class="card-subtitle mt-3 text-muted">{{this.posts[0].author + " " + this.posts[0].publishedAt}}</h6>
                      <p class="card-text mt-3">{{this.posts[0].description}}</p>
-                     <p class="card-text mt-3">{{this.posts[0].content}}</p>
                      <a :href="this.posts[0].url" target="_blank">
                        <button type="button"  class="btn btn-outline-light mt-3 mb-5">Details </button>
                      </a>
@@ -79,7 +81,6 @@
                      <h1 class="card-title mt-3">{{selectedPostTitle}}</h1>
                      <h6 class="card-subtitle mt-3 text-muted">{{selectedPostAuthor + " " + selectedPostPublishedAt}}</h6>
                      <p class="card-text mt-3">{{selectedPostDescr}}</p>
-                     <p class="card-text mt-3">{{selectedPostContent}}</p>
                      <a :href="selectedPostLink" target="_blank">
                        <button type="button"  class="btn btn-outline-light mt-3 mb-5">Details </button>
                      </a>
@@ -104,7 +105,6 @@
       selectedPostTitle: '',
       selectedPostDescr: '',
       selectedPostId: null,
-      selectedPostContent: '',
       selectedPostPublishedAt: '',
       selectedPostAuthor: '',
       selectedPostLink: '',
@@ -191,7 +191,7 @@
       },
       newsTheme: function() {
         setTimeout(() => {
-          this.posts = []
+          this.posts = [];
           this.newsAnimation = 'fadeIn';
           if (this.slide === 3) {
             this.$http.get('https://coinsidio.herokuapp.com/articles').then(responce => {
