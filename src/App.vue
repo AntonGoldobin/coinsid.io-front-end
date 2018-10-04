@@ -39,7 +39,7 @@
               <div class="card news-row" v-on:click="selectedPostShow(post)">
                 <div class="row align-items-center">
                   <b-col cols="1">
-                    <img class="m-3 news-logo" :src="post.iconURL">
+                    <img class="m-3 news-logo" :src="post.iconUrl">
                   </b-col>
                   <b-col cols="9">
                     <p class="p-3 text-left card-text">{{ post.title }}</p>
